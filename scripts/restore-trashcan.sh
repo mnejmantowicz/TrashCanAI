@@ -260,8 +260,8 @@ install_user_tools() {
 
     install -m 755 "${SCRIPT_DIR}/serve.sh" "${HOME}/serve.sh"
 
-    sed -E "s|^((model|mmproj)[[:space:]]*=[[:space:]]*).*(/models/)|\1${HOME}\3|" \
-        "${SCRIPT_DIR}/trashcan-models.ini" > "${HOME}/.trashcan-models.ini"
+    sed -E "s#^((model|mmproj)[[:space:]]*=[[:space:]]*).*(/models/)#\1${HOME}\3#" \
+    "${SCRIPT_DIR}/trashcan-models.ini" > "${HOME}/.trashcan-models.ini"
     mkdir -p "${HOME}/models"
 }
 
