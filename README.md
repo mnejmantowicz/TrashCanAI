@@ -27,7 +27,8 @@ Turning an inexpensive 2013 Apple Mac Pro (`MacPro6,1`, dual FirePro D500 / 64 G
 Clone this repository on your 2013 Mac Pro and run the all-in-one restore script as your regular `sudo`-capable user (not as `root`):
 
 ```bash
-git clone https://github.com/devwithzachary/TrashCanAI.git ~/TrashCanAI
+# git clone https://github.com/devwithzachary/TrashCanAI.git ~/TrashCanAI
+git clone https://github.com/mnejmantowicz/TrashCanAI.git ~/TrashCanAI
 cd ~/TrashCanAI
 ./scripts/restore-trashcan.sh --all-models --pin-llama
 sudo reboot
