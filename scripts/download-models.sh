@@ -19,6 +19,7 @@ URL_MD2_PROJ="https://huggingface.co/moondream/moondream2-gguf/resolve/main/moon
 URL_RERANKER_TXT="https://huggingface.co/mradermacher/Qwen3-VL-Reranker-2B-GGUF/resolve/main/Qwen3-VL-Reranker-2B.IQ4_XS.gguf"
 URL_RERANKER_PROJ="https://huggingface.co/mradermacher/Qwen3-VL-Reranker-2B-GGUF/resolve/main/Qwen3-VL-Reranker-2B.mmproj-Q8_0.gguf"
 URL_QWEN3_8B="https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf"
+URL_QWEN36="https://huggingface.co/unsloth/Qwen3.6-35B-A3B-MTP-GGUF/resolve/main/Qwen3.6-35B-A3B-MXFP4_MOE.gguf"
 
 download_hf() {
     local url="$1"
@@ -85,7 +86,7 @@ echo "1) Tier 1: Qwen 2.5 Coder 1.5B Instruct (Q8_0 ~1.8 GB) [trash-fast]"
 echo "2) Tier 1: Qwen 2.5 3B Instruct (Q4_K_M ~2.0 GB) [trash-social]"
 echo "3) Tier 2: Qwen 2.5 Coder 7B Instruct (Q4_K_M ~4.4 GB) [trash-code]"
 echo "4) Tier 3: Qwen 2.5 Coder 14B Instruct (Q4_K_M ~8.4 GB) [trash-deep]"
-echo "5) Tier 3: Qwen 2.5 Coder 32B Instruct (Q4_K_M ~19 GB) [trash-heavy]"
+echo "5) Qwen3.6-35B-A3B-MXFP4_MOE.gguf [trash-qwen36]"
 echo "6) Qwen3 8B (Q4_K_M ~5.03GB ) [trash-patrol]"
 echo "7) Core Preset Bundle (1.5B, 3B, 7B, Moondream2 ~12 GB)"
 echo "8) All 7 TrashCanAI Models (~39 GB total - complete setup)"
@@ -97,7 +98,7 @@ case "${CHOICE}" in
     2) download_hf "${URL_3B}" "qwen2.5-3b-instruct-q4_k_m.gguf" ;;
     3) download_hf "${URL_7B}" "qwen2.5-coder-7b-instruct-q4_k_m.gguf" ;;
     4) download_hf "${URL_14B}" "qwen2.5-coder-14b-instruct-q4_k_m.gguf" ;;
-    5) download_hf "${URL_32B}" "qwen2.5-coder-32b-instruct-q4_k_m.gguf" ;;
+    5) download_hf "${URL_QWEN36}" "Qwen3.6-35B-A3B-MXFP4_MOE.gguf" ;;
     6) download_hf "${URL_QWEN3_8B}" "qwen3-8b-q4_k_m.gguf" ;;
     7) download_core ;;
     8) download_all ;;
