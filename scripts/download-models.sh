@@ -16,6 +16,9 @@ URL_14B="https://huggingface.co/Qwen/Qwen2.5-Coder-14B-Instruct-GGUF/resolve/mai
 URL_32B="https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct-GGUF/resolve/main/qwen2.5-coder-32b-instruct-q4_k_m.gguf"
 URL_MD2_TXT="https://huggingface.co/moondream/moondream2-gguf/resolve/main/moondream2-text-model-f16.gguf"
 URL_MD2_PROJ="https://huggingface.co/moondream/moondream2-gguf/resolve/main/moondream2-mmproj-f16.gguf"
+URL_RERANKER_TXT="https://huggingface.co/mradermacher/Qwen3-VL-Reranker-2B-GGUF/resolve/main/Qwen3-VL-Reranker-2B.IQ4_XS.gguf"
+URL_RERANKER_PROJ="https://huggingface.co/mradermacher/Qwen3-VL-Reranker-2B-GGUF/resolve/main/Qwen3-VL-Reranker-2B.mmproj-Q8_0.gguf"
+URL_QWEN3_8B="https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/main/Qwen3-8B-Q4_K_M.gguf"
 
 download_hf() {
     local url="$1"
@@ -83,10 +86,11 @@ echo "2) Tier 1: Qwen 2.5 3B Instruct (Q4_K_M ~2.0 GB) [trash-social]"
 echo "3) Tier 2: Qwen 2.5 Coder 7B Instruct (Q4_K_M ~4.4 GB) [trash-code]"
 echo "4) Tier 3: Qwen 2.5 Coder 14B Instruct (Q4_K_M ~8.4 GB) [trash-deep]"
 echo "5) Tier 3: Qwen 2.5 Coder 32B Instruct (Q4_K_M ~19 GB) [trash-heavy]"
-echo "6) Vision: Moondream2 F16 + mmproj (~3.6 GB total) [trash-vision]"
+echo "6) Qwen3 8B (Q4_K_M ~5.03GB ) [trash-patrol]"
 echo "7) Core Preset Bundle (1.5B, 3B, 7B, Moondream2 ~12 GB)"
 echo "8) All 7 TrashCanAI Models (~39 GB total - complete setup)"
-read -p "Enter choice [1-8]: " CHOICE
+echo "9) Qwen3-VL-Reranker-2B"
+read -p "Enter choice [1-9]: " CHOICE
 
 case "${CHOICE}" in
     1) download_hf "${URL_1_5B}" "qwen2.5-coder-1.5b-instruct-q8_0.gguf" ;;
@@ -94,12 +98,13 @@ case "${CHOICE}" in
     3) download_hf "${URL_7B}" "qwen2.5-coder-7b-instruct-q4_k_m.gguf" ;;
     4) download_hf "${URL_14B}" "qwen2.5-coder-14b-instruct-q4_k_m.gguf" ;;
     5) download_hf "${URL_32B}" "qwen2.5-coder-32b-instruct-q4_k_m.gguf" ;;
-    6)
-        download_hf "${URL_MD2_TXT}" "moondream2-text-model-f16.gguf"
-        download_hf "${URL_MD2_PROJ}" "moondream2-mmproj-f16.gguf"
-        ;;
+    6) download_hf "${URL_QWEN3_8B}" "qwen3-8b-q4_k_m.gguf" ;;
     7) download_core ;;
     8) download_all ;;
+    9)
+	download_hf "${URL_RERANKER_TXT}" "qwen3-vl-reranker-2b-iq4_xs.gguf"
+	download_hf "${URL_RERANKER_PROJ}" "qwen3-vl-reranker-2b-mmproj-q8_0.gguf"
+	;;
     *)
         echo "[-] Invalid choice."
         exit 1
@@ -107,4 +112,3 @@ case "${CHOICE}" in
 esac
 
 echo "[✓] Download complete. Models saved to ${MODEL_DIR}"
-
