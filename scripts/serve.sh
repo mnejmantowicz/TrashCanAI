@@ -20,7 +20,7 @@ if [ ! -f "${SERVER_BIN}" ]; then
     exit 1
 fi
 
-HOST="0.0.0.0"
+HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-8080}"
 MODELS_MAX="${MODELS_MAX:-1}"
 
